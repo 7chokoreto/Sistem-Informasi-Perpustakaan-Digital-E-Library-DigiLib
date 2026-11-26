@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DigiLib - Masuk ke Sistem Perpustakaan</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-canvas: #f0f3f8;
+      --bg-card: #f3f6fa;
+      --primary: #1d4ed8;
+      --primary-dark: #1e3a8a;
+      --primary-glow: rgba(29, 78, 216, 0.35);
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      
+      /* Neumorphic Shadows inspired by the reference design */
+      --shadow-outer: 14px 14px 28px #d6dde8, -14px -14px 28px #ffffff;
+      --shadow-card: 10px 10px 22px #d8e0eb, -10px -10px 22px #ffffff;
+      --shadow-floating: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+      --shadow-sm: 5px 5px 12px #d4dce8, -5px -5px 12px #ffffff;
+      --shadow-inset: inset 4px 4px 8px #d2dae7, inset -4px -4px 8px #ffffff;
+      --shadow-inset-focus: inset 4px 4px 10px #c7d2e2, inset -4px -4px 10px #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+      position: relative;
+      overflow-x: hidden;
+      color: var(--text-main);
+    }
+
+    /* Ambient Decorative Floating Elements */
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--bg-canvas);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .fc-1 { width: 52px; height: 52px; top: 8%; left: 8%; font-size: 20px; }
+    .fc-2 { width: 44px; height: 44px; top: 18%; left: 42%; font-size: 16px; color: var(--primary); }
+    .fc-3 { width: 60px; height: 60px; bottom: 8%; left: 6%; font-size: 24px; font-weight: 800; color: var(--primary); }
+    .fc-4 { width: 56px; height: 56px; top: 12%; right: 10%; font-size: 20px; }
+    .fc-5 { width: 42px; height: 42px; bottom: 12%; right: 28%; font-size: 16px; }
+    .fc-6 { width: 68px; height: 68px; bottom: -20px; right: 20%; font-size: 24px; }
+
+    /* Main Container (Split Screen Rounded Card) */
+    .login-container {
+      width: 100%;
+      max-width: 1100px;
+      background: var(--bg-canvas);
+      border-radius: 40px;
+      box-shadow: var(--shadow-outer);
+      padding: 56px 64px;
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    /* Left Side: Hero Information */
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      min-height: 480px;
+    }
+
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .brand-badge-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 4px 10px var(--primary-glow);
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: var(--text-main);
+    }
+
+    .hero-main h1 {
+      font-size: 44px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .hero-main p {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 440px;
+      margin-bottom: 32px;
+    }
+
+    .btn-hero-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 34px;
+      border-radius: 14px;
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 13.5px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      box-shadow: 4px 6px 18px var(--primary-glow);
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-hero-action:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .hero-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(200, 215, 235, 0.5);
+    }
+
+    .stat-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .stat-pill i {
+      color: var(--primary);
+      font-size: 14px;
+    }
+
+    /* Right Side: Neumorphic Floating Card */
+    .form-card {
+      background: var(--bg-card);
+      border-radius: 28px;
+      box-shadow: var(--shadow-card);
+      padding: 42px 38px;
+      text-align: center;
+      position: relative;
+    }
+
+    .form-card h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 22px;
+    }
+
+    /* Social/Quick Circle Icons */
+    .quick-auth-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .quick-icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--bg-canvas);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      text-decoration: none;
+    }
+
+    .quick-icon-btn:hover {
+      transform: translateY(-2px);
+      color: var(--primary);
+      box-shadow: var(--shadow-floating);
+    }
+
+    .divider-text {
+      font-size: 12.5px;
+      color: var(--text-light);
+      margin-bottom: 24px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .input-box {
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--bg-canvas);
+      border-radius: 12px;
+      border: 1px solid transparent;
+      box-shadow: var(--shadow-inset);
+      font-size: 14px;
+      color: var(--text-main);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .input-box::placeholder {
+      color: #9aa8bc;
+    }
+
+    .input-box:focus {
+      border-color: rgba(29, 78, 216, 0.3);
+      box-shadow: var(--shadow-inset-focus);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      border-radius: 14px;
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      border: none;
+      box-shadow: 4px 6px 18px var(--primary-glow);
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .footer-help {
+      margin-top: 22px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    .footer-help a {
+      color: var(--primary);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .footer-help a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .login-container {
+        grid-template-columns: 1fr;
+        padding: 36px 28px;
+        gap: 36px;
+      }
+      .hero-side {
+        min-height: auto;
+        text-align: center;
+      }
+      .brand-header {
+        justify-content: center;
+      }
+      .hero-main p {
+        margin: 0 auto 24px auto;
+      }
+      .hero-footer {
+        justify-content: center;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Neumorphic Spheres & Badges -->
+  <div class="floating-circle fc-1"><i class="fa-solid fa-book-bookmark"></i></div>
+  <div class="floating-circle fc-2"><i class="fa-solid fa-users"></i></div>
+  <div class="floating-circle fc-3">DL</div>
+  <div class="floating-circle fc-4"><i class="fa-solid fa-shield-halved"></i></div>
+  <div class="floating-circle fc-5"><i class="fa-solid fa-bell"></i></div>
+  <div class="floating-circle fc-6"><i class="fa-solid fa-shapes"></i></div>
+
+  <!-- Main Login Card Container -->
+  <div class="login-container">
+    
+    <!-- Left Hero Side -->
+    <div class="hero-side">
+      <div>
+        <div class="brand-header">
+          <div class="brand-badge-icon">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <span class="brand-title">DigiLib System</span>
+        </div>
+
+        <div class="hero-main">
+          <h1>Kelola Perpustakaan Modern Lebih Mudah</h1>
+          <p>
+            Platform terpadu untuk administrasi perpustakaan umum. Pantau data buku, layani peminjaman anggota, dan kelola akun pengguna dengan tampilan yang rapi dan nyaman.
+          </p>
+          <a href="#loginFormCard" class="btn-hero-action">
+            Mulai Sekarang
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-footer">
+        <div class="stat-pill">
+          <i class="fa-solid fa-users"></i>
+          <span>3.400+ Anggota Aktif</span>
+        </div>
+        <div class="stat-pill">
+          <i class="fa-solid fa-book"></i>
+          <span>24.000+ Koleksi Buku</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Neumorphic Form Card -->
+    <div class="form-card" id="loginFormCard">
+      <h2>Masuk ke Akun</h2>
+
+
+
+      <form id="universalLoginForm" action="pages/superadmin/dashboard.html" method="GET">
+        <div class="form-group">
+          <input 
+            type="email" 
+            class="input-box" 
+            id="emailInput" 
+            name="email" 
+            value="ahmad@digilib.id" 
+            placeholder="Alamat Email (contoh: ahmad@digilib.id)" 
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <input 
+            type="password" 
+            class="input-box" 
+            id="passwordInput" 
+            name="password" 
+            value="password123" 
+            placeholder="Kata Sandi" 
+            required
+          >
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <span>Masuk</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+
+      <div class="footer-help">
+        Lupa kata sandi? <a href="#" onclick="alert('Silakan hubungi Superadmin untuk reset kata sandi.'); return false;">Bantuan Akun</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Auto-direct based on input email and persist session role
+    document.getElementById('universalLoginForm').addEventListener('submit', function(e) {
+      const email = document.getElementById('emailInput').value.toLowerCase().trim();
+      
+      // Check accounts in localStorage if available
+      let accounts = [];
+      try {
+        const stored = localStorage.getItem('digilib_accounts');
+        if (stored) accounts = JSON.parse(stored);
+      } catch (err) {}
+
+      if (email.includes('pustakawan') || email.includes('staff') || email.includes('librarian')) {
+        this.action = 'pages/pustakawan/dashboard.html';
+      } else if (email.includes('superadmin') || email.includes('admin')) {
+        this.action = 'pages/superadmin/dashboard.html';
+      } else {
+        // Default to Member (Anggota Umum)
+        this.action = 'pages/member/dashboard.html';
+        
+        let matchedAccount = null;
+
+        if (email.includes('indah')) {
+          // Cari akun Indah dari digilib_accounts jika ada
+          const found = accounts.find(a => (a.email && a.email.toLowerCase().includes('indah')) || a.id === 4);
+          matchedAccount = found || {
+            id: 4,
+            name: 'Indah Permata',
+            email: 'indah@digilib.id',
+            role: 'member',
+            roleLabel: 'Member',
+            status: 'suspended',
+            suspensionReason: 'Keterlambatan pengembalian buku lebih dari 30 hari pada judul Laut Bercerita.',
+            joinedDate: '10 Feb 2024',
+            phone: '0821-4455-6677',
+            avatar: '' // avatar kosong jika belum upload
+          };
+        } else {
+          // Default ke Ahmad Fauzi (Aktif)
+          const found = accounts.find(a => (a.email && a.email.toLowerCase().includes('ahmad')) || a.id === 3);
+          matchedAccount = found || {
+            id: 3,
+            name: 'Ahmad Fauzi',
+            email: 'ahmad@digilib.id',
+            role: 'member',
+            roleLabel: 'Member',
+            status: 'active',
+            suspensionReason: '',
+            joinedDate: '15 Agu 2024',
+            phone: '0857-1122-3344',
+            avatar: '' // avatar kosong jika belum upload
+          };
+        }
+
+        localStorage.setItem('digilib_current_user', JSON.stringify(matchedAccount));
+      }
+    });
+  </script>
+</body>
+</html>

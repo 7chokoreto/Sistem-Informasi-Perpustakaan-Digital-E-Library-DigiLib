@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1e3a8a" />
+    </linearGradient>
+  </defs>
+  <!-- Background Squircle -->
+  <rect width="64" height="64" rx="16" fill="url(#bgGrad)" />
+  <!-- Book Spine & Cover -->
+  <path d="M16 14C14.343 14 13 15.343 13 17V47C13 48.657 14.343 50 16 50H46C48.209 50 50 48.209 50 46V18C50 15.791 48.209 14 46 14H16Z" fill="#ffffff" opacity="0.15" />
+  <!-- Main Book -->
+  <path d="M17 15H45C47.209 15 49 16.791 49 19V45C49 46.657 47.657 48 46 48H18C16.343 48 15 46.657 15 45V17C15 15.895 15.895 15 17 15Z" fill="#ffffff" />
+  <!-- Book Spine Crease -->
+  <rect x="21" y="15" width="2" height="33" fill="#cbd5e1" />
+  <!-- Inner Bookmark Ribbon -->
+  <path d="M29 15V32L34.5 28.5L40 32V15H29Z" fill="#1d4ed8" />
+  <!-- Book Page Lines -->
+  <rect x="25" y="36" width="18" height="2" rx="1" fill="#94a3b8" />
+  <rect x="25" y="41" width="13" height="2" rx="1" fill="#cbd5e1" />
+</svg>

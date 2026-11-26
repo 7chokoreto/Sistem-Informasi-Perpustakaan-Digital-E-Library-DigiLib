@@ -1,0 +1,199 @@
+/* ==========================================================================
+   DigiLib - Pustakawan (Librarian) Portal Stylesheet
+   Refined Neumorphic Soft UI, Symmetrical Layout, 100% Consistent with Superadmin
+   Focused on Public Library Book Catalog, Loans, Returns, and Members
+   ========================================================================== */
+
+/* Brand Icon Accent for Pustakawan */
+.brand-icon.pustakawan-brand {
+  color: #1d4ed8;
+  background: var(--bg-main);
+  box-shadow: var(--shadow-flat);
+}
+
+/* Book Thumbnail / Cover in Table */
+.book-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.book-thumb {
+  width: 42px;
+  height: 48px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #e9eff8 0%, #d8e2ee 100%);
+  box-shadow: 2px 2px 6px rgba(166, 180, 200, 0.4), -2px -2px 6px rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1d4ed8;
+  font-size: 18px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.book-title-text {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.book-author-text {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Shelf / Rak Badge */
+.badge-shelf {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  background: var(--bg-main);
+  box-shadow: 2px 2px 5px rgba(166, 180, 200, 0.3), -2px -2px 5px rgba(255, 255, 255, 0.6);
+  border: var(--border-subtle);
+}
+
+/* Category Badges */
+.badge-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11.5px;
+  font-weight: 700;
+  background: var(--bg-main);
+  box-shadow: 2px 2px 5px rgba(166, 180, 200, 0.3), -2px -2px 5px rgba(255, 255, 255, 0.6);
+  border: var(--border-subtle);
+  color: #334155;
+}
+
+/* Loan Status Badges */
+.loan-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.loan-badge.dipinjam {
+  color: #1d4ed8;
+  background: rgba(29, 78, 216, 0.08);
+  border: 1px solid rgba(29, 78, 216, 0.2);
+}
+
+.loan-badge.kembali {
+  color: #059669;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.loan-badge.terlambat {
+  color: #dc2626;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.loan-badge.pending-validation {
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+/* Fine (Denda) Display */
+.fine-badge {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.fine-badge.has-fine {
+  color: #dc2626;
+}
+
+.fine-badge.no-fine {
+  color: #059669;
+}
+
+/* Loan Modal Details Box */
+.loan-detail-card {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: var(--bg-main);
+  box-shadow: var(--shadow-inset);
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.loan-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.loan-detail-label {
+  color: var(--text-muted);
+}
+
+.loan-detail-value {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* Quick Action Button for Loan Return */
+.btn-return-book {
+  background: #059669;
+  color: white;
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  border: none;
+  box-shadow: 0 4px 10px rgba(5, 150, 105, 0.3);
+}
+
+.btn-return-book:hover {
+  background: #047857;
+  transform: translateY(-1px);
+}
+
+.btn-return-book:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Stock Available Indicator */
+.stock-indicator {
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.stock-indicator.available {
+  color: #059669;
+}
+
+.stock-indicator.empty {
+  color: #ea580c;
+}
