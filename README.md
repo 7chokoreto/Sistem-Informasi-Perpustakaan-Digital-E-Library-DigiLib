@@ -14,6 +14,7 @@ Sistem ini mengadopsi alur sirkulasi peminjaman mandiri berbasis cabang pengambi
 ---
 
 ## 🎨 Arsitektur Desain (Neumorphic Soft UI)
+* **Link Desain Figma:** [Figma Project - DigiLib UI Design System](https://www.figma.com/design/8enUtgdAB71gVU3fzmbVLN/Sistem-Perpustakaan-DigiLib?t=K3UxiWcPvga1QF4y-0)
 * **Warna Dasar Canvas:** `#E6ECF5` (Soft Powder Neumorphic Canvas)
 * **Warna Elemen/Surface:** `#E9EFF8` / `#EAF0F9`
 * **Brand Primary:** `#2563EB` (Royal Blue) & `#1D4ED8` (Deep Blue)

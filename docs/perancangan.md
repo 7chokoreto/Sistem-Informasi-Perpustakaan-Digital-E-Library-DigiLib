@@ -11,7 +11,7 @@
   2. **Pustakawan:** Staf operasional pelayanan sirkulasi fisik & validasi online.
   3. **Member (Anggota Umum / Mahasiswa):** Pengguna layanan perpustakaan, peminjam buku fisik, dan reservasi online.
 * **Tujuan:** Menyediakan antarmuka manajemen perpustakaan modern dengan arsitektur **Neumorphic Soft UI**, memfasilitasi alur peminjaman mandiri berbasis cabang pengambilan (mengadopsi alur modern reservasi perpustakaan), monitoring denda otomatis, pelacakan inventaris buku, serta pengawasan hak akses akun secara real-time.
-* **Link Figma Design System & High-Fidelity UI:** [Figma Project - DigiLib UI Design System](https://www.figma.com/design/8enUtgdAB71gVU3fzmbVLN/Sistem-Perpustakaan-DigiLib?t=MsrbwjYF6Sfde4be-1)
+* **Link Figma Design System & High-Fidelity UI:** [Figma Project - DigiLib UI Design System](https://www.figma.com/design/8enUtgdAB71gVU3fzmbVLN/Sistem-Perpustakaan-DigiLib?t=K3UxiWcPvga1QF4y-0)
 
 ---
 
