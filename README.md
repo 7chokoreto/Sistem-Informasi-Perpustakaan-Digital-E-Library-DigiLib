@@ -7,9 +7,9 @@
 ---
 
 ## 📖 Tentang Proyek
-**DigiLib** adalah aplikasi sistem administrasi dan sirkulasi perpustakaan digital terpadu yang memadukan estetika desain **Neumorphic Soft UI** (`#e6ecf5`) dengan kejelasan arsitektur informasi dan interaktivitas client-side yang responsif. 
+**DigiLib** adalah aplikasi sistem administrasi dan perpustakaan digital terpadu yang memadukan estetika desain **Neumorphic Soft UI** (`#e6ecf5`) dengan kejelasan arsitektur informasi dan interaktivitas client-side yang responsif. 
 
-Sistem ini mengadopsi alur sirkulasi peminjaman mandiri berbasis cabang pengambilan (referensi standar perpustakaan modern), manajemen inventaris koleksi buku fisik, kalkulasi denda otomatis, hingga pengelolaan hak akses multi-peran secara real-time.
+Sistem ini mengadopsi alur peminjaman mandiri berbasis cabang pengambilan, manajemen inventaris koleksi buku fisik, kalkulasi denda otomatis, hingga pengelolaan hak akses multi-peran secara real-time.
 
 ---
 
@@ -34,7 +34,7 @@ Sistem ini mengadopsi alur sirkulasi peminjaman mandiri berbasis cabang pengambi
   * Hapus akun pengguna secara permanen.
 
 ### 2. 📖 Pustakawan (Layanan Sirkulasi & Inventaris)
-* **Dashboard Operasional:** Metrik sirkulasi real-time (total judul, eksemplar fisik, pinjaman aktif, denda).
+* **Dashboard Operasional:** Monitoring total judul, eksemplar fisik, pinjaman aktif, dan denda secara real-time.
 * **Katalog Master Buku:** Inventarisasi buku, pencarian instan, filter kategori, tambah/edit data buku dengan upload sampul lokal, serta pengaturan lokasi rak dan ketersediaan cabang.
 * **Layanan Sirkulasi Peminjaman:** 
   * Validasi pengajuan pinjam online (Setujui atau Tolak dengan alasan).
@@ -47,7 +47,7 @@ Sistem ini mengadopsi alur sirkulasi peminjaman mandiri berbasis cabang pengambi
 * **Katalog & Detail Buku:** Pencarian judul/penulis, filter kategori, detail bibliografi lengkap, ketersediaan per cabang perpustakaan, dan modal bagikan (*share*) interaktif ke WhatsApp, X, Instagram, serta salin tautan.
 * **Keranjang Peminjaman & Checkout:** Pemilihan cabang ketersediaan, pemesanan multi-buku, konfirmasi persetujuan syarat & ketentuan, serta pemilihan lokasi pengambilan.
 * **Aktivitas & Riwayat:** Pelacakan status peminjaman (Menunggu Validasi, Siap Diambil, Sedang Dipinjam, Selesai, Ditolak).
-* **Akun Saya:** Pengaturan profil, upload avatar, dan pembaruan kata sandi (*toggle show/hide password*).
+* **Akun Saya:** Pengaturan profil, upload avatar, dan pembaruan kata sandi.
 
 ---
 
@@ -123,8 +123,8 @@ PWEB 2/
 
 1. **Clone repository ini:**
    ```bash
-   git clone https://github.com/username-anda/digilib-pweb2.git
-   cd digilib-pweb2
+   git clone https://github.com/7chokoreto/Sistem-Informasi-Perpustakaan-Digital-E-Library-DigiLib.git
+   cd Sistem-Informasi-Perpustakaan-Digital-E-Library-DigiLib
    ```
 
 2. **Instal dependensi PHP:**
